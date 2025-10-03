@@ -1,0 +1,160 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyProfileApp());
+}
+
+class MyProfileApp extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("GRC"),
+        backgroundColor: Colors.lightBlue[300],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue[300]),
+              child: Column(
+                children: [
+                  Image.asset("https://th.bing.com/th/id/OIP.eecmL10lHcYMMhzIGWbirAHaDs?w=350&h=174&c=7&r=0&o=7&cb=12&pid=1.7&rm=3",
+                      height: 80, width: 80, errorBuilder:
+                          (BuildContext context, Object exception,
+                          StackTrace? stackTrace) {
+                        return Icon(Icons.error, color: Colors.black, size: 60);
+                      }),
+
+                  Text(
+                    "GRC MENU",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(title: Text("Home")),
+            ListTile(title: Text("Courses")),
+            ListTile(title: Text("Vision")),
+            ListTile(title: Text("Mission")),
+          ],
+        ),
+
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+
+            Text(
+              "Global Reciprocal Colleges",
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blueAccent[400]),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            Card(
+              child: Padding(
+
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    Text("Mission",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.teal[400])),
+
+                    SizedBox(height: 10),
+                    Text(
+                      "GRC is creating a culture for successful, socially responsible, morally upright skilled workers and highly competent professionals through values-based quality education.",
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Card(
+              child: Padding(
+
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    Text("Vision",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.tealAccent[400])),
+
+                    SizedBox(height: 10),
+                    Text(
+                      "A global community of excellent individuals with values.",
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Text("Colleges",
+                style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[400])),
+            SizedBox(height: 20),
+            Column(
+              children: [
+                collegeCard("https://grc.edu.ph/wp-content/uploads/elementor/thumbs/it-outu8f4vazq9hp49ntbuxv3pe85vgr5rndrar3lmiw.jpg", "Bachelor of Science in Information Technology"),
+                collegeCard("https://grc.edu.ph/wp-content/uploads/elementor/thumbs/images-2-outtq63o498hlpav7ag5ldp5whtc1z7ktq3ynb2wz4.jpg", "Bachelor of Science in Accountancy"),
+                collegeCard("https://grc.edu.ph/wp-content/uploads/elementor/thumbs/images-outtqfi2bkabm5mkp423ok2v07yv1f210lenh6ojhs.jpg", "Bachelor of Science in Business Administration and Entrepreneurship"),
+                collegeCard("https://grc.edu.ph/wp-content/uploads/elementor/thumbs/images-1-outtqbqpk856bps1b2flel10mohe6mn3o2spk2u46o.jpg", "Bachelor of Secondary Education")
+              ],
+
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget collegeCard(String imagePath, String title) {
+    return Card(
+      margin: EdgeInsets.only(bottom: 16),
+      child: Column(
+        children: [
+          Image.asset(imagePath, height: 120, width: double.infinity, fit: BoxFit.cover, errorBuilder:
+              (BuildContext context, Object exception, StackTrace? stackTrace) {
+            return Container(
+              height: 120,
+              color: Colors.grey[300],
+              child: Center(
+                  child: Text("Image not found"),
+              ),
+            );
+          }),
+          Padding(
+            padding: EdgeInsets.all(8),
+            child: Text(title,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          ),
+        ],
+      ),
+    );
+  }
+
+}
